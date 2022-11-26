@@ -27,7 +27,14 @@ export default {
     onSubmit() {
       if (this.msg) {
         socket.emit('chat message', this.msg);
+
+        const message = this.msg;
+
+        socket.on('chat message', (message) => {
+        console.log(message);
+
         this.msg = '';
+      });
       };
     },
   },
